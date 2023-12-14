@@ -1,14 +1,19 @@
-diff --git a/index.js b/index.js
-index c9a9821..e5aacaa 100644
---- a/index.js
-+++ b/index.js
-@@ -30,9 +30,6 @@ function HelloWorld({
-       )}
-       <em>{greeted}</em>
-       {silent ? "." : "!"}
--
--
--
-     </div>
-   );
- }
+diff --git a/lint.patch b/lint.patch
+index d5dfd79..e69de29 100644
+--- a/lint.patch
++++ b/lint.patch
+@@ -1,14 +0,0 @@
+-diff --git a/index.js b/index.js
+-index c9a9821..e5aacaa 100644
+---- a/index.js
+-+++ b/index.js
+-@@ -30,9 +30,6 @@ function HelloWorld({
+-       )}
+-       <em>{greeted}</em>
+-       {silent ? "." : "!"}
+--
+--
+--
+-     </div>
+-   );
+- }
