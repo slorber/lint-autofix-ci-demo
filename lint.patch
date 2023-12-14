@@ -1,49 +1,54 @@
 diff --git a/lint.patch b/lint.patch
-index cdf598c..e69de29 100644
+index 1638335..e69de29 100644
 --- a/lint.patch
 +++ b/lint.patch
-@@ -1,44 +0,0 @@
+@@ -1,49 +0,0 @@
 -diff --git a/lint.patch b/lint.patch
--index 17d5425..e69de29 100644
+-index cdf598c..e69de29 100644
 ---- a/lint.patch
 -+++ b/lint.patch
--@@ -1,39 +0,0 @@
+-@@ -1,44 +0,0 @@
 --diff --git a/lint.patch b/lint.patch
---index c9e5c4a..e69de29 100644
+--index 17d5425..e69de29 100644
 ----- a/lint.patch
 --+++ b/lint.patch
---@@ -1,34 +0,0 @@
+--@@ -1,39 +0,0 @@
 ---diff --git a/lint.patch b/lint.patch
----index e213324..e69de29 100644
+---index c9e5c4a..e69de29 100644
 ------ a/lint.patch
 ---+++ b/lint.patch
----@@ -1,29 +0,0 @@
+---@@ -1,34 +0,0 @@
 ----diff --git a/lint.patch b/lint.patch
-----index 9cee57e..e69de29 100644
+----index e213324..e69de29 100644
 ------- a/lint.patch
 ----+++ b/lint.patch
-----@@ -1,24 +0,0 @@
+----@@ -1,29 +0,0 @@
 -----diff --git a/lint.patch b/lint.patch
------index 2692ea2..e69de29 100644
+-----index 9cee57e..e69de29 100644
 -------- a/lint.patch
 -----+++ b/lint.patch
------@@ -1,19 +0,0 @@
+-----@@ -1,24 +0,0 @@
 ------diff --git a/lint.patch b/lint.patch
-------index d5dfd79..e69de29 100644
+------index 2692ea2..e69de29 100644
 --------- a/lint.patch
 ------+++ b/lint.patch
-------@@ -1,14 +0,0 @@
--------diff --git a/index.js b/index.js
--------index c9a9821..e5aacaa 100644
----------- a/index.js
--------+++ b/index.js
--------@@ -30,9 +30,6 @@ function HelloWorld({
--------       )}
--------       <em>{greeted}</em>
--------       {silent ? "." : "!"}
---------
---------
---------
--------     </div>
--------   );
-------- }
+------@@ -1,19 +0,0 @@
+-------diff --git a/lint.patch b/lint.patch
+-------index d5dfd79..e69de29 100644
+---------- a/lint.patch
+-------+++ b/lint.patch
+-------@@ -1,14 +0,0 @@
+--------diff --git a/index.js b/index.js
+--------index c9a9821..e5aacaa 100644
+----------- a/index.js
+--------+++ b/index.js
+--------@@ -30,9 +30,6 @@ function HelloWorld({
+--------       )}
+--------       <em>{greeted}</em>
+--------       {silent ? "." : "!"}
+---------
+---------
+---------
+--------     </div>
+--------   );
+-------- }
