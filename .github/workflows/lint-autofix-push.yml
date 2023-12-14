@@ -1,0 +1,35 @@
+name: Lint AutoFix Push
+
+on:
+  workflow_run:
+    workflows: [Lint AutoFix Diff,Lint AutoFix Comment]
+    types:
+      - completed
+
+jobs:
+  lint-autofix-push:
+    name: Lint AutoFix Push
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      # Debug
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+          WORKFLOW_RUN_CONTEXT: ${{ toJson(github.event.workflow_run) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          echo "$WORKFLOW_RUN_CONTEXT"
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'refactor: apply lint autofix push'

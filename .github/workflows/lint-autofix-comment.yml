@@ -32,6 +32,8 @@ jobs:
 
     name: Lint AutoFix Comment
     runs-on: ubuntu-latest
+    outputs:
+      my-job-output-test: 'test'
 
     steps:
 
