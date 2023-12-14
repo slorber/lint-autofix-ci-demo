@@ -1,4 +1,4 @@
-name: Lint AutoFix Diff
+name: Lint
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  lint-autofix-diff:
-    name: Lint AutoFix Diff
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,4 @@ jobs:
         run: npm install
 
       - name: AutoFix Format
-        run: npm run lint:fix
-
-      - name: Generate Diff Patch
-        run: git diff > lint.patch
+        run: npm run lint

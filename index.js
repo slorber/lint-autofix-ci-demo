@@ -1,7 +1,5 @@
 // Default code sample from the Prettier Playground: https://prettier.io/playground/
 
-
-
 function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
@@ -12,21 +10,22 @@ function HelloWorld({
     return null;
   }
 
-
-
-  
   let num = Math.floor(Math.random() * 1e7)
     .toString()
     .replace(/\.\d+/gi, "");
 
 
 
-
+  
+  
   
   return (
     <div
       className="HelloWorld"
       title={`You are visitor number ${num}`}
+      
+      
+      
       onMouseOver={onMouseOver}
     >
       <strong>

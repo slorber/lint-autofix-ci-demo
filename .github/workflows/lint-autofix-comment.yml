@@ -1,0 +1,48 @@
+name: Lint AutoFix Comment
+
+on:
+  # It looks like you can't target PRs-only comments
+  # So we must run this workflow every time a new comment is added to issues and pull requests
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_comment-use-issue_comment
+  # https://mmazzarolo.com/blog/2022-09-09-visual-regression-testing-with-playwright-and-github-actions/
+  issue_comment:
+    types: [created]
+
+jobs:
+  lint-autofix-comment:
+    # /!\ SECURITY CONCERNS
+    # SUPER IMPORTANT - only trusted maintainers should be allowed to trigger this workflow
+    # This will run on untrusted PR code with write permissions
+    # A malicious user sending a PR should not be able to trigger it
+    #
+    # Trigger: "/lint-autofix"
+    # Allowed authors: ['slorber', 'Josh-Cena']
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/lint-autofix') &&
+      (
+        github.event.comment.user.login == 'slorber' ||
+        github.event.comment.user.login == 'Josh-Cena'
+      )
+
+    name: Lint AutoFix Comment
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Installation
+        run: npm install
+
+      - name: AutoFix Format
+        run: npm run lint:fix
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "refactor: apply lint autofix"
