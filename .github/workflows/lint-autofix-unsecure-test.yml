@@ -1,0 +1,30 @@
+name: Lint AutoFix Unsecure Test
+
+on:
+  push:
+    branches: [main]
+  pull_request_target:
+    branches: [main]
+
+jobs:
+  lint-autofix-unsecure-test:
+    name: Lint AutoFix Unsecure Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
+
+      - name: Installation
+        run: npm install
+
+      - name: AutoFix Format
+        run: npm run lint:fix
+
+      - name: Generate Diff Patch
+        run: git diff > lint.patch
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
