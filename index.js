@@ -2,10 +2,6 @@
 
 // TEST PR
 
-
-
-
-
 function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
