@@ -1,0 +1,14 @@
+diff --git a/index.js b/index.js
+index c9a9821..e5aacaa 100644
+--- a/index.js
++++ b/index.js
+@@ -30,9 +30,6 @@ function HelloWorld({
+       )}
+       <em>{greeted}</em>
+       {silent ? "." : "!"}
+-
+-
+-
+     </div>
+   );
+ }
