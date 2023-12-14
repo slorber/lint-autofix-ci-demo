@@ -1,76 +1,81 @@
 diff --git a/lint.patch b/lint.patch
-index 04b1c7e..e69de29 100644
+index 0ce256e..e69de29 100644
 --- a/lint.patch
 +++ b/lint.patch
-@@ -1,71 +0,0 @@
+@@ -1,76 +0,0 @@
 -diff --git a/lint.patch b/lint.patch
--index 822b0c9..e69de29 100644
+-index 04b1c7e..e69de29 100644
 ---- a/lint.patch
 -+++ b/lint.patch
--@@ -1,66 +0,0 @@
+-@@ -1,71 +0,0 @@
 --diff --git a/lint.patch b/lint.patch
---index a6334a5..e69de29 100644
+--index 822b0c9..e69de29 100644
 ----- a/lint.patch
 --+++ b/lint.patch
---@@ -1,61 +0,0 @@
+--@@ -1,66 +0,0 @@
 ---diff --git a/lint.patch b/lint.patch
----index e0d0309..e69de29 100644
+---index a6334a5..e69de29 100644
 ------ a/lint.patch
 ---+++ b/lint.patch
----@@ -1,56 +0,0 @@
+---@@ -1,61 +0,0 @@
 ----diff --git a/lint.patch b/lint.patch
-----index 570ea94..e69de29 100644
+----index e0d0309..e69de29 100644
 ------- a/lint.patch
 ----+++ b/lint.patch
-----@@ -1,51 +0,0 @@
+----@@ -1,56 +0,0 @@
 -----diff --git a/lint.patch b/lint.patch
------index 8d281c1..e69de29 100644
+-----index 570ea94..e69de29 100644
 -------- a/lint.patch
 -----+++ b/lint.patch
------@@ -1,46 +0,0 @@
+-----@@ -1,51 +0,0 @@
 ------diff --git a/lint.patch b/lint.patch
-------index 191e349..e69de29 100644
+------index 8d281c1..e69de29 100644
 --------- a/lint.patch
 ------+++ b/lint.patch
-------@@ -1,41 +0,0 @@
--------diff --git a/.github/workflows/lint-autofix-comment.yml b/.github/workflows/lint-autofix-comment.yml
--------index a28b02c..65b2ffd 100644
----------- a/.github/workflows/lint-autofix-comment.yml
--------+++ b/.github/workflows/lint-autofix-comment.yml
--------@@ -38,7 +38,6 @@ jobs:
--------           # ref: ${{ github.event.pull_request.head.ref }}
--------           ref: ${{ github.event.pull_request.head.sha }}
-------- 
---------
--------       - name: Installation
--------         run: npm install
-------- 
--------diff --git a/index.js b/index.js
--------index 5ef1862..e5aacaa 100644
----------- a/index.js
--------+++ b/index.js
--------@@ -14,24 +14,10 @@ function HelloWorld({
--------     .toString()
--------     .replace(/\.\d+/gi, "");
-------- 
---------
---------
---------  
---------  
---------  
---------  
--------   return (
--------     <div
--------       className="HelloWorld"
--------       title={`You are visitor number ${num}`}
---------      
---------      
---------      
---------      
---------      
---------      
---------      
---------       
--------       onMouseOver={onMouseOver}
--------     >
--------       <strong>
+------@@ -1,46 +0,0 @@
+-------diff --git a/lint.patch b/lint.patch
+-------index 191e349..e69de29 100644
+---------- a/lint.patch
+-------+++ b/lint.patch
+-------@@ -1,41 +0,0 @@
+--------diff --git a/.github/workflows/lint-autofix-comment.yml b/.github/workflows/lint-autofix-comment.yml
+--------index a28b02c..65b2ffd 100644
+----------- a/.github/workflows/lint-autofix-comment.yml
+--------+++ b/.github/workflows/lint-autofix-comment.yml
+--------@@ -38,7 +38,6 @@ jobs:
+--------           # ref: ${{ github.event.pull_request.head.ref }}
+--------           ref: ${{ github.event.pull_request.head.sha }}
+-------- 
+---------
+--------       - name: Installation
+--------         run: npm install
+-------- 
+--------diff --git a/index.js b/index.js
+--------index 5ef1862..e5aacaa 100644
+----------- a/index.js
+--------+++ b/index.js
+--------@@ -14,24 +14,10 @@ function HelloWorld({
+--------     .toString()
+--------     .replace(/\.\d+/gi, "");
+-------- 
+---------
+---------
+---------  
+---------  
+---------  
+---------  
+--------   return (
+--------     <div
+--------       className="HelloWorld"
+--------       title={`You are visitor number ${num}`}
+---------      
+---------      
+---------      
+---------      
+---------      
+---------      
+---------      
+---------       
+--------       onMouseOver={onMouseOver}
+--------     >
+--------       <strong>
