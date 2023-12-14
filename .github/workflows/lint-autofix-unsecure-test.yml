@@ -20,6 +20,7 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.head_ref }}
+          token: ${{ secrets.PAT_AUTOLINT }}
 
       - name: Installation
         run: npm install
@@ -31,3 +32,5 @@ jobs:
         run: git diff > lint.patch
 
       - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'refactor: apply lint autofix'
