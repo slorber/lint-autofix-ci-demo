@@ -77,6 +77,7 @@ jobs:
           # see https://github.com/actions/checkout/issues/331#issuecomment-707103442
           repository: ${{ fromJSON(steps.get-pr.outputs.result).head.repo.full_name }}
           ref: ${{ fromJSON(steps.get-pr.outputs.result).head.ref }}
+          token: ${{ secrets.PAT_AUTOLINT }}
 
       - name: Installation
         run: npm install
@@ -86,4 +87,4 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "refactor: apply lint autofix"
+          commit_message: "refactor: apply lint autofix v2"
