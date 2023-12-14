@@ -35,12 +35,22 @@ jobs:
 
     steps:
 
-      - id: 'get-branch'
-        run: echo ::set-output name=branch::$(gh pr view $PR_NO --repo $REPO --json headRefName --jq '.headRefName')
-        env:
-          REPO: ${{ github.repository }}
-          PR_NO: ${{ github.event.issue.number }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/github-script@v3
+        id: get-pr
+        with:
+          script: |
+            const request = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            }
+            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
+            try {
+              const result = await github.pulls.get(request)
+              return result.data
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
 
       # Debug
       - name: Dump GitHub context
@@ -57,10 +67,16 @@ jobs:
         with:
           # repository: ${{ github.event.pull_request.head.repo.full_name }}
           # ref: ${{ github.event.pull_request.head.ref }}
+
           # see https://github.com/actions/checkout/issues/331#issuecomment-1438220926
           # ref: refs/pull/${{ github.event.issue.number }}/head
+
           # see https://github.com/actions/checkout/issues/331#issuecomment-1567674767
-          ref: ${{ steps.get-branch.outputs.branch }}
+          # ref: ${{ steps.get-branch.outputs.branch }}
+
+          # see https://github.com/actions/checkout/issues/331#issuecomment-707103442
+          repository: ${{ fromJSON(steps.get-pr.outputs.result).head.repo.full_name }}
+          ref: ${{ fromJSON(steps.get-pr.outputs.result).head.sha }} # or .head.ref for branch name
 
       - name: Installation
         run: npm install
