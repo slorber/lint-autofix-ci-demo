@@ -1,0 +1,25 @@
+name: Lint AutoFix Push
+
+on:
+  workflow_run:
+    workflows: [Lint AutoFix Diff]
+    types:
+      - completed
+
+jobs:
+  lint-autofix-push:
+    name: Lint AutoFix Push
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'refactor: apply lint autofix'
