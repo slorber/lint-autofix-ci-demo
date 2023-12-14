@@ -1,11 +1,17 @@
 name: Lint AutoFix Comment
 
-on:
+# on:
   # It looks like you can't target PRs-only comments
   # So we must run this workflow every time a new comment is added to issues and pull requests
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_comment-use-issue_comment
   # https://mmazzarolo.com/blog/2022-09-09-visual-regression-testing-with-playwright-and-github-actions/
-  issue_comment:
+  # issue_comment:
+  #  types: [created]
+
+# Due to issue with "issue_comment", we only handle review comments for now
+# see https://github.com/actions/checkout/issues/331
+on:
+  pull_request_review_comment:
     types: [created]
 
 jobs:
