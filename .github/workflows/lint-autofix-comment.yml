@@ -1,18 +1,17 @@
 name: Lint AutoFix Comment
 
-# on:
+on:
   # It looks like you can't target PRs-only comments
   # So we must run this workflow every time a new comment is added to issues and pull requests
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_comment-use-issue_comment
   # https://mmazzarolo.com/blog/2022-09-09-visual-regression-testing-with-playwright-and-github-actions/
-  # issue_comment:
-  #  types: [created]
-
-# Due to issue with "issue_comment", we only handle review comments for now
-# see https://github.com/actions/checkout/issues/331
-on:
-  pull_request_review_comment:
+  issue_comment:
     types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
 
 jobs:
   lint-autofix-comment:
@@ -33,25 +32,29 @@ jobs:
 
     name: Lint AutoFix Comment
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
 
     steps:
+
+      # see https://github.com/actions/checkout/issues/331
+      - uses: xt0rted/pull-request-comment-branch@v2
+        id: comment-branch
 
       # Debug
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
           PR_CONTEXT: ${{ toJson(github.event.pull_request) }}
+          STEPS_CONTEXT: ${{ toJson(steps) }}
         run: |
           echo "$GITHUB_CONTEXT"
           echo "$PR_CONTEXT"
+          echo "$STEPS_CONTEXT"
 
       - uses: actions/checkout@v4
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+          # repository: ${{ github.event.pull_request.head.repo.full_name }}
+          # ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ steps.comment-branch.outputs.head_ref }}
 
       - name: Installation
         run: npm install
