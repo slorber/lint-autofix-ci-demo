@@ -25,7 +25,7 @@ jobs:
         github.event.comment.user.login == 'Josh-Cena'
       )
 
-    name: Lint AutoFix Diff
+    name: Lint AutoFix Comment
     runs-on: ubuntu-latest
     permissions:
       contents: write
