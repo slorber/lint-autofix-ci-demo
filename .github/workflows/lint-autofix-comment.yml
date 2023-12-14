@@ -20,10 +20,16 @@ jobs:
     # Allowed authors: ['slorber', 'Josh-Cena']
     if: |
       github.event.issue.pull_request &&
-      github.event.comment.body == '/lint-autofix'
+      contains(github.event.comment.body, '/lint-autofix') &&
+      (
+        github.event.comment.user.login == 'slorber' ||
+        github.event.comment.user.login == 'Josh-Cena'
+      )
 
     name: Lint AutoFix Diff
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
