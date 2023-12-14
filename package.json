@@ -1,0 +1,31 @@
+{
+  "name": "lint-autofix-ci-demo",
+  "version": "1.0.0",
+  "description": "GitHub Actions setup to automatically fix PRs of external contributors",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx prettier . --list-different",
+    "lint:fix": "npx prettier . --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slorber/lint-autofix-ci-demo.git"
+  },
+  "keywords": [
+    "GitHub Actions",
+    "Lint",
+    "Autofix",
+    "fix",
+    "pr",
+    "ci"
+  ],
+  "author": "slorber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slorber/lint-autofix-ci-demo/issues"
+  },
+  "homepage": "https://github.com/slorber/lint-autofix-ci-demo#readme",
+  "devDependencies": {
+    "prettier": "3.1.1"
+  }
+}
