@@ -19,9 +19,9 @@ jobs:
     # Trigger: "/lint-autofix"
     # Allowed authors: ['slorber', 'Josh-Cena']
     if: |
-      github.event.issue.pull_request
-        && github.event.comment.body == '/lint-autofix'
-        && contains(['slorber', 'Josh-Cena'], github.event.comment.user.login)
+      github.event.issue.pull_request &&
+      github.event.comment.body == '/lint-autofix' &&
+      contains(['slorber', 'Josh-Cena'], github.event.comment.user.login)
 
     name: Lint AutoFix Diff
     runs-on: ubuntu-latest
