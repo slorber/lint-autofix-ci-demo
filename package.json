@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "npx prettier . --list-different",
-    "lint:fix": "npx prettier . --write"
+    "lint:fix": "echo 'Files reformatted by Prettier:' && npx prettier . --write --list-different"
   },
   "repository": {
     "type": "git",
