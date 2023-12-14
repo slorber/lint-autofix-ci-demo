@@ -32,12 +32,17 @@ jobs:
       pull-requests: write
 
     steps:
+
+      # Debug
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - uses: actions/checkout@v4
         with:
-          # repository: ${{ github.event.pull_request.head.repo.full_name }}
-          # ref: ${{ github.event.pull_request.head.ref }}
-          ref: ${{ github.event.pull_request.head.sha }}
-
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Installation
         run: npm install
