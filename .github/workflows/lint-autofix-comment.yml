@@ -35,10 +35,6 @@ jobs:
 
     steps:
 
-      # see https://github.com/actions/checkout/issues/331
-      - uses: xt0rted/pull-request-comment-branch@v2
-        id: comment-branch
-
       # Debug
       - name: Dump GitHub context
         env:
@@ -54,7 +50,8 @@ jobs:
         with:
           # repository: ${{ github.event.pull_request.head.repo.full_name }}
           # ref: ${{ github.event.pull_request.head.ref }}
-          ref: ${{ steps.comment-branch.outputs.head_ref }}
+          # see https://github.com/actions/checkout/issues/331#issuecomment-1438220926
+          ref: refs/pull/${{ github.event.issue.number }}/head
 
       - name: Installation
         run: npm install
