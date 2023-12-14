@@ -28,6 +28,6 @@ jobs:
       - name: AutoFix Format
         run: npm run lint:fix
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'refactor: apply lint autofix'
+      #- uses: stefanzweifel/git-auto-commit-action@v5
+      #  with:
+      #    commit_message: 'refactor: apply lint autofix'
