@@ -1,0 +1,41 @@
+diff --git a/.github/workflows/lint-autofix-comment.yml b/.github/workflows/lint-autofix-comment.yml
+index a28b02c..65b2ffd 100644
+--- a/.github/workflows/lint-autofix-comment.yml
++++ b/.github/workflows/lint-autofix-comment.yml
+@@ -38,7 +38,6 @@ jobs:
+           # ref: ${{ github.event.pull_request.head.ref }}
+           ref: ${{ github.event.pull_request.head.sha }}
+ 
+-
+       - name: Installation
+         run: npm install
+ 
+diff --git a/index.js b/index.js
+index 5ef1862..e5aacaa 100644
+--- a/index.js
++++ b/index.js
+@@ -14,24 +14,10 @@ function HelloWorld({
+     .toString()
+     .replace(/\.\d+/gi, "");
+ 
+-
+-
+-  
+-  
+-  
+-  
+   return (
+     <div
+       className="HelloWorld"
+       title={`You are visitor number ${num}`}
+-      
+-      
+-      
+-      
+-      
+-      
+-      
+-       
+       onMouseOver={onMouseOver}
+     >
+       <strong>

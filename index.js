@@ -14,24 +14,10 @@ function HelloWorld({
     .toString()
     .replace(/\.\d+/gi, "");
 
-
-
-  
-  
-  
-  
   return (
     <div
       className="HelloWorld"
       title={`You are visitor number ${num}`}
-      
-      
-      
-      
-      
-      
-      
-       
       onMouseOver={onMouseOver}
     >
       <strong>
